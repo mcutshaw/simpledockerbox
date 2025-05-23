@@ -1,4 +1,4 @@
-FROM simpleboxbase:latest
+FROM simpledockerbox:base
 
 ARG USERNAME=re
 USER root

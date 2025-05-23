@@ -19,8 +19,7 @@ env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: ghcr.io
   # github.repository as <account>/<repo>
-  IMAGE_NAME: simpleboxbase
-
+  IMAGE_NAME: ${{ github.repository }}
 
 jobs:
   build:
@@ -78,7 +77,7 @@ jobs:
           context: .
           file: base/Dockerfile
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: [ "base" ]
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
