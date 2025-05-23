@@ -75,7 +75,7 @@ jobs:
         with:
           context: .
           file: base/Dockerfile
-          tags: [ "base" ]
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:base
           labels: latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
@@ -90,7 +90,7 @@ jobs:
           context: .
           file: openbox/Dockerfile
           push: ${{ github.event_name != 'pull_request' }}
-          tags: [ "openbox" ]
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:openbox
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
